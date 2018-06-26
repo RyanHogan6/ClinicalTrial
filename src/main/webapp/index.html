@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON display</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+
+
+<div ng-app="myApp" ng-controller="myController">
+
+    <h1>Clinicals</h1>
+
+    <h1 ng-repeat="emp in list.employeeList">{{emp.id}} {{emp.name}}</h1>
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myController', function ($scope, $http) {
+
+        $http.get("http://localhost:8080/jersey/employees/get")
+            .then(function(response) {
+                $scope.list = response.data;
+            });
+    });
+
+</script>
+</body>
+</html>

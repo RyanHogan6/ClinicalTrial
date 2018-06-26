@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="searchByIntv.css">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Search Conflicts By NCTID</h1>
+</div>
+
+<div class=SearchBox ng-app="myApp" ng-controller="conflictsByNCT">
+
+    <h4>Enter NCTID:</h4>
+    <input type="text" ng-model="nct">
+    <button ng-click="getConflicts()">Submit</button>
+
+    <table cellspacing="4" cellpadding="4">
+        <tr>
+            <th>NCTID</th>
+            <th>Conflicts</th>
+            <th>Criterion</th>
+            <th>Covered Int Text</th>
+            <th>Covered cri Text</th>
+            <th>Conflict Cui</th>
+        </tr>
+
+        <tr ng-repeat = "trial in trials">
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasNCT"][0]["@value"]}}</td>
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasIntCoveredText"][0]["@value"]}}</td>
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasCriterion"][0]["@value"]}}</td>
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasIntCoveredText"][0]["@value"]}}</td>
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasCriteriaCoveredText"][0]["@value"]}}</td>
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasConflictCui"][0]["@value"]}}</td>
+        </tr>
+    </table>
+
+
+</div>
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('conflictsByNCT', function($scope, $http) {
+
+        $scope.nct = "";
+
+        $scope.getConflicts = function() {
+            $http.get("http://localhost:8080/clin/clinical/getConflicts/" + $scope.nct).then(function(response) {
+                $scope.trials = response.data;
+            });
+        };
+
+    });
+</script>
+
+
+</body>
+</html>

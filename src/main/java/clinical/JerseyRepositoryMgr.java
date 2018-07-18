@@ -16,7 +16,6 @@ public class JerseyRepositoryMgr {
     @Produces(MediaType.TEXT_HTML)
     public String testGetNctIdsByInterventionName(@PathParam("value") String val) {
         RepositoryMgr repoMgr = new RepositoryMgr();
-
         return repoMgr.getTrialIdsByInterventionName(val);
 
     }
@@ -37,5 +36,29 @@ public class JerseyRepositoryMgr {
         RepositoryMgr repoMgr = new RepositoryMgr();
         return repoMgr.getConflictsByNctID(nct);
 
+    }
+
+    @GET
+    @Path("/getFullTrialInfo/{nct}")
+    @Produces(MediaType.TEXT_HTML)
+    public String getFullTrialByNCT(@PathParam("nct") String nct) {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        return repoMgr.getFullTrialByNctID(nct);
+    }
+
+    @GET
+    @Path("/getTrialsByCondition/{condition}")
+    @Produces(MediaType.TEXT_HTML)
+    public String getTrialsByCondition(@PathParam("condition") String condition) {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        return repoMgr.getFullTrialsByCondition(condition);
+    }
+
+    @GET
+    @Path("/getRecruitingTrialsByCondition/{condition}")
+    @Produces(MediaType.TEXT_HTML)
+    public String getRecruitingTrialsByCondition(@PathParam("condition") String condition) {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        return repoMgr.getRecruitingFullTrialsByCondition(condition);
     }
 }

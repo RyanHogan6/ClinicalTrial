@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="trialList.css">
+
+<div class="box">
+    <div class="header">
+        <h1>Search All Clinical Trials</h1>
+    </div>
+
+
+<div class=buttonList>
+    <span ng-repeat="trial in trials">
+        <a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
+            <button>
+                <u>Status:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
+                <br>
+                <br>
+                <u>Study Title:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+                <br>
+                <br>
+                <u>Conditions:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}
+            </button>
+        </a>
+    </span>
+</div>
+</div>

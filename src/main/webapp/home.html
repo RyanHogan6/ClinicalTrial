@@ -2,33 +2,44 @@
 <html>
 <head>
     <title>Home Page</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="home.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="home.js"></script>
+
+
 </head>
 
-<body>
+<body ng-app="clinicalTrialApp">
 
-<div class="header">
-    <h1>Search Clinical Trials Below</h1>
-    <h3>Search any of the following criteria</h3>
+<div class="headerImage">
+
+    <img src="https://images.unsplash.com/photo-1519781542704-957ff19eff00?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c351475860e8248dcd543ebbba1aa24f&auto=format&fit=crop&w=1446&q=80">
+    <div class="navBar">
+        <ul>
+            <li><a href="home.html"><strong>Home</strong></a></li>
+            <li><a href=""><strong>About</strong></a></li>
+            <li><a href=""><strong>Contact</strong></a></li>
+        </ul>
+        <div class="top_left_image">
+            <img src="https://media-public.canva.com/MABG_sSOA-M/1/screen.svg">
+        </div>
+    </div>
+
+    <div class="titleBar">
+        <h1>Find Trials Below</h1>
+    </div>
+
 </div>
 
-<div class="searchButtons">
 
-    <form action="searchByInt.html">
-        <button>Trials by Interventions</button>
-    </form>
+    <div ui-view>
 
-    <form action="trialsByNCT.html">
-        <button>Trials by NCTID </button>
-    </form>
+    </div>
 
-    <form action="conflictsByNCT.html">
-        <button>Conflicts by NCTID </button>
-    </form>
-
-</div>
 
 </body>
-</html>
 
+</html>

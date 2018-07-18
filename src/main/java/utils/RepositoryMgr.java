@@ -60,12 +60,31 @@ public class RepositoryMgr {
      */
     public String getTrialIdsByInterventionName(String intName) {
         conn = repo.getConnection();
-        GraphQuery gQuery = conn.prepareGraphQuery("construct {?nct ct:hasNCT ?nctid}"
-                + "where {?nct ct:hasNCT ?nctid."
-                + "?nct ct:hasIntervention ?int."
-                + "?int ct:hasName \"" + intName + "\".}");
-
-        GraphQueryResult results = gQuery.evaluate();
+        GraphQuery graphQuery = conn.prepareGraphQuery("construct where {?ct ct:hasIntervention ?int." +
+                "?int ct:hasName \"" + intName + "\"." +
+                "?t fct:hasConflictRep ?ct." +
+                "?t fct:hasNCT ?nctid." +
+                "?t fct:hasReqHeader ?reqHeader." +
+                "?t fct:hasBriefTitle ?briefTitle." +
+                "?t fct:hasOrgStudyId ?orgStudyId." +
+                "?t fct:hasOfficialTitle ?officialTitle." +
+                "?t fct:hasLeadSponsor ?leadSponsor." +
+                "?t fct:hasCollabSponsor ?collabSponsor." +
+                "?t fct:hasBriefSummary ?briefSummary." +
+                "?t fct:hasDetailedDescrip ?detailDescrip." +
+                "?t fct:hasOverallStatus ?overallStatus." +
+                "?t fct:hasPhase ?phase." +
+                "?t fct:hasStartDate ?startDate." +
+                "?t fct:hasCompletionDate ?completeDate." +
+                "?t fct:hasCondition ?cond." +
+                "?t fct:hasStudyType ?studyType." +
+                "?t fct:hasSamplingMethod ?sampMeth." +
+                "?t fct:hasCriteriaText ?criteria." +
+                "?t fct:hasHealthyVolunteers ?volun." +
+                "?t fct:hasGender ?gender." +
+                "?t fct:hasMinAge ?minAge." +
+                "?t fct:hasMaxAge ?maxAge. }");
+        GraphQueryResult results = graphQuery.evaluate();
         return formatResults(results);
     }
 
@@ -117,6 +136,112 @@ public class RepositoryMgr {
 
     }
 
+    /**
+     * This returns the general representation of a clinical trial geared to whose
+     * nctid matches the value in the parameter
+     * The general representation is intended to contain the bulk of the information
+     * from clinicaltrials.gov, such as sponsors, start and end date, phase, etc.
+     * It is only a partial representation at present.  Eligibility criteria are returned
+     * as in their original representation - a large text block.
+     * @param nctid
+     * @return
+     */
+    public String getFullTrialByNctID(String nctid) {
+        conn = repo.getConnection();
+        GraphQuery gQuery = conn.prepareGraphQuery("construct where {?t fct:hasNCT \"" + nctid + "\"."
+                + "?t fct:hasConflictRep ?conflictRep."
+                + "?t fct:hasReqHeader ?reqHeader."
+                + " ?t fct:hasSecondaryId ?secondaryId."
+                + " ?t fct:hasBriefTitle ?briefTitle."
+                + "?t fct:hasOrgStudyId ?orgStudyId."
+                + " ?t fct:hasOfficialTitle ?officialTitle."
+                + " ?t fct:hasLeadSponsor ?leadSponsor."
+                + " ?t fct:hasCollabSponsor ?collabSponsor."
+                + "  ?t fct:hasBriefSummary ?briefSummary."
+                + "  ?t fct:hasDetailedDescrip ?detailDescrip."
+                + " ?t fct:hasOverallStatus ?overallStatus."
+                + " ?t fct:hasPhase ?phase."
+                + "  ?t fct:hasStartDate ?startDate."
+                + " ?t fct:hasCompletionDate ?completeDate."
+                + " ?t fct:hasCondition ?cond."
+                + " ?t fct:hasStudyType ?studyType."
+                + " ?t fct:hasSamplingMethod ?sampMeth."
+                + " ?t fct:hasCriteriaText ?criteria."
+                + " ?t fct:hasHealthyVolunteers ?volun."
+                + " ?t fct:hasGender ?gender."
+                + " ?t fct:hasMinAge ?minAge."
+                + " ?t fct:hasMaxAge ?maxAge. }");
+
+
+        GraphQueryResult results = gQuery.evaluate();
+        return formatResults(results);
+
+    }
+
+    public String getFullTrialsByCondition(String condition) {
+        conn = repo.getConnection();
+
+        GraphQuery gQuery = conn.prepareGraphQuery("construct where {?t fct:hasCondition \"" + condition + "\"."
+                + "?t fct:hasNCT ?nct."
+                + "?t fct:hasConflictRep ?conflictRep."
+                + "?t fct:hasReqHeader ?reqHeader."
+                + "?t fct:hasSecondaryId ?secondaryId."
+                + "?t fct:hasBriefTitle ?briefTitle."
+                + "?t fct:hasOrgStudyId ?orgStudyId."
+                + "?t fct:hasOfficialTitle ?officialTitle."
+                + "?t fct:hasLeadSponsor ?leadSponsor."
+                + "?t fct:hasCollabSponsor ?collabSponsor."
+                + "?t fct:hasBriefSummary ?briefSummary."
+                + "?t fct:hasDetailedDescrip ?detailDescrip."
+                + "?t fct:hasOverallStatus ?overallStatus."
+                + "?t fct:hasPhase ?phase."
+                + "?t fct:hasStartDate ?startDate."
+                + "?t fct:hasCompletionDate ?completeDate."
+                + "?t fct:hasStudyType ?studyType."
+                + "?t fct:hasSamplingMethod ?sampMeth."
+                + "?t fct:hasCriteriaText ?criteria."
+                + "?t fct:hasHealthyVolunteers ?volun."
+                + "?t fct:hasGender ?gender."
+                + "?t fct:hasMinAge ?minAge."
+                + "?t fct:hasMaxAge ?maxAge. }");
+
+        GraphQueryResult results = gQuery.evaluate();
+        return formatResults(results);
+    }
+
+    public String getRecruitingFullTrialsByCondition(String condition) {
+
+        conn = repo.getConnection();
+
+        GraphQuery gQuery = conn.prepareGraphQuery("construct where {?t fct:hasCondition \"" + condition + "\"."
+                + "?t fct:hasOverallStatus \"Recruiting\"."
+                + "?t fct:hasNCT ?nct."
+                + "?t fct:hasConflictRep ?conflictRep."
+                + "?t fct:hasReqHeader ?reqHeader."
+                + "?t fct:hasSecondaryId ?secondaryId."
+                + "?t fct:hasBriefTitle ?briefTitle."
+                + "?t fct:hasOrgStudyId ?orgStudyId."
+                + "?t fct:hasOfficialTitle ?officialTitle."
+                + "?t fct:hasLeadSponsor ?leadSponsor."
+                + "?t fct:hasCollabSponsor ?collabSponsor."
+                + "?t fct:hasBriefSummary ?briefSummary."
+                + "?t fct:hasDetailedDescrip ?detailDescrip."
+                + "?t fct:hasPhase ?phase."
+                + "?t fct:hasStartDate ?startDate."
+                + "?t fct:hasCompletionDate ?completeDate."
+                + "?t fct:hasStudyType ?studyType."
+                + "?t fct:hasSamplingMethod ?sampMeth."
+                + "?t fct:hasCriteriaText ?criteria."
+                + "?t fct:hasHealthyVolunteers ?volun."
+                + "?t fct:hasGender ?gender."
+                + "?t fct:hasMinAge ?minAge."
+                + "?t fct:hasMaxAge ?maxAge. }");
+
+        GraphQueryResult results = gQuery.evaluate();
+
+        return formatResults(results);
+
+    }
 
 
 
@@ -128,6 +253,9 @@ public class RepositoryMgr {
         resultsStr = strWriter.toString();
         return resultsStr;
     }
+
+
+
 
 
     public void close() {

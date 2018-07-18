@@ -1,0 +1,122 @@
+<link rel="stylesheet" type="text/css" href="trialInfo.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Trial Info</title>
+</head>
+
+<div class="backBox">
+
+    <div class="briefTitleBox">
+        <h3 ng-repeat="trial in trialInfo">
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value']}}
+        </h3>
+    </div>
+
+    <div class="mainContentBox">
+    <div class="mainContent">
+
+    <br>
+
+
+
+        <h3 ng-repeat="trial in trialInfo">
+            Condition: <br>
+            <strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}</strong>
+        </h3>
+
+
+    <br>
+
+
+        <h3 ng-repeat="trial in trialInfo">
+            Sponsor:<br>
+            <strong>{{trial['http://stjohns.edu/fullclinicaltrial/hasLeadSponsor'][0]['@value']}}</strong>
+        </h3>
+
+
+    <br>
+
+
+         <h3 ng-repeat="trial in trialInfo">
+             NCT (Unique Identifier)<br>
+             <strong>{{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}</strong>
+         </h3>
+
+</div>
+</div>
+<br>
+<br>
+
+    <div class="descriptionHeader">
+        <h3>Description</h3>
+    </div>
+
+    <div class="descriptionBox">
+        <h3 ng-repeat="trial in trialInfo">
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasDetailedDescrip'][0]['@value']}}
+        </h3>
+    </div>
+
+    <div class="table1Header">
+        <h3>Overview</h3>
+    </div>
+
+<div class="tableBox">
+
+    <div class="tableContent">
+    <table>
+    <tr>
+        <th>Sex</th>
+        <th>Age</th>
+        <th>Status</th>
+        <th>Condition</th>
+    </tr>
+
+    <tr ng-repeat="trial in trialInfo">
+        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
+        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasMinAge'][0]['@value']}}</td>
+        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</td>
+        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}</td>
+    </tr>
+
+</table>
+
+    </div>
+</div>
+
+    <div class="table2Header">
+        <h3>Eligibility</h3>
+    </div>
+
+    <div class="tableBox">
+
+        <div class="tableContent">
+            <table>
+                <tr>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Healthy Volunteers</th>
+               </tr>
+
+                 <tr ng-repeat="trial in trialInfo">
+                     <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasMaxAge']}}</td>
+                     <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
+                     <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value']}}</td>
+             </tr>
+            </table>
+        </div>
+    </div>
+
+<div class="excludingTrialBox">
+
+    <span ng-repeat="trial in trialInfo">
+        <a ui-sref="findConflicts({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
+            <button>See Conflicts</button>
+        </a>
+    </span>
+
+    <div ui-view>
+
+    </div>
+</div>
+</div>

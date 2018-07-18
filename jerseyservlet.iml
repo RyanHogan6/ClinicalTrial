@@ -392,5 +392,8 @@
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-throwingproviders:4.0" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.complexible.stardog.memory:stardog-memory:5.3.0" level="project" />
+    <orderEntry type="library" name="angular-ui-router" level="application" />
+    <orderEntry type="library" name="ui-router-angularjs" level="application" />
+    <orderEntry type="library" name="angular-animate" level="application" />
   </component>
 </module>

@@ -1,0 +1,16 @@
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Conflicts</title>
+</head>
+<body>
+
+    <h1>NCT ID's</h1>
+
+    <div>
+        <span ng-repeat="conflict in conflictInfo">
+            <h3>{{conflict['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}</h3>
+        </span>
+    </div>
+
+</body>

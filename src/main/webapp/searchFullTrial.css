@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background: white;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+.header {
+    text-align: center;
+}
+
+
+table, th, tr, td {
+    border: 1px solid black;
+}
+
+.head {
+    align-content: center;
+    text-align: center;
+}
+
+.titleBar {
+    align-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mainContent {
+    align-content: center;
+    text-align: center;
+}
+
+.headerBox {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}

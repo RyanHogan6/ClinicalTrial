@@ -2,6 +2,8 @@ package clinical;
 
 
 import utils.RepositoryMgr;
+
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -48,7 +50,7 @@ public class JerseyRepositoryMgr {
 
     @GET
     @Path("/getTrialsByCondition/{condition}")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.TEXT_PLAIN)
     public String getTrialsByCondition(@PathParam("condition") String condition) {
         RepositoryMgr repoMgr = new RepositoryMgr();
         return repoMgr.getFullTrialsByCondition(condition);
@@ -61,4 +63,13 @@ public class JerseyRepositoryMgr {
         RepositoryMgr repoMgr = new RepositoryMgr();
         return repoMgr.getRecruitingFullTrialsByCondition(condition);
     }
+
+    @GET
+    @Path("/getConditionsByName/{condition}")
+    @Produces(MediaType.TEXT_HTML)
+    public String getConditionsByName(@PathParam("condition") String condition) {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        return repoMgr.getConditionsByName(condition);
+    }
+
 }

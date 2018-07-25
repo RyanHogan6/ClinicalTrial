@@ -395,5 +395,7 @@
     <orderEntry type="library" name="angular-ui-router" level="application" />
     <orderEntry type="library" name="ui-router-angularjs" level="application" />
     <orderEntry type="library" name="angular-animate" level="application" />
+    <orderEntry type="library" name="angular-material" level="application" />
+    <orderEntry type="library" name="angular-route" level="application" />
   </component>
 </module>

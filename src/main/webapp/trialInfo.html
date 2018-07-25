@@ -6,117 +6,133 @@
 
 <div class="backBox">
 
+
     <div class="briefTitleBox">
-        <h3 ng-repeat="trial in trialInfo">
+        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value'] != null">
+            Official Title
+            <br>
+            <br>
             {{trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value']}}
         </h3>
     </div>
-
-    <div class="mainContentBox">
-    <div class="mainContent">
-
-    <br>
-
-
-
-        <h3 ng-repeat="trial in trialInfo">
-            Condition: <br>
-            <strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}</strong>
-        </h3>
-
-
-    <br>
-
-
-        <h3 ng-repeat="trial in trialInfo">
-            Sponsor:<br>
-            <strong>{{trial['http://stjohns.edu/fullclinicaltrial/hasLeadSponsor'][0]['@value']}}</strong>
-        </h3>
-
-
-    <br>
-
-
-         <h3 ng-repeat="trial in trialInfo">
-             NCT (Unique Identifier)<br>
-             <strong>{{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}</strong>
-         </h3>
-
-</div>
-</div>
-<br>
-<br>
 
     <div class="descriptionHeader">
         <h3>Description</h3>
     </div>
 
     <div class="descriptionBox">
-        <h3 ng-repeat="trial in trialInfo">
-            {{trial['http://stjohns.edu/fullclinicaltrial/hasDetailedDescrip'][0]['@value']}}
+        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasDetailedDescrip'][0]['@value'] != null">
+            <strong>Brief Summary</strong>
+            <br>
+            <br>
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefSummary'][0]['@value']}}
         </h3>
-    </div>
 
-    <div class="table1Header">
-        <h3>Overview</h3>
-    </div>
+        <div class="detailedDescrButton">
+             <span ng-repeat="trial in trialInfo | limitTo : 1 : 0">
+                <a ui-sref=".descr({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
+                    <button>Detailed Description</button>
+                </a>
+             </span>
 
-<div class="tableBox">
+            <div ui-view>
 
-    <div class="tableContent">
-    <table>
-    <tr>
-        <th>Sex</th>
-        <th>Age</th>
-        <th>Status</th>
-        <th>Condition</th>
-    </tr>
-
-    <tr ng-repeat="trial in trialInfo">
-        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
-        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasMinAge'][0]['@value']}}</td>
-        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</td>
-        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}</td>
-    </tr>
-
-</table>
-
-    </div>
-</div>
-
-    <div class="table2Header">
-        <h3>Eligibility</h3>
-    </div>
-
-    <div class="tableBox">
-
-        <div class="tableContent">
-            <table>
-                <tr>
-                    <th>Age</th>
-                    <th>Sex</th>
-                    <th>Healthy Volunteers</th>
-               </tr>
-
-                 <tr ng-repeat="trial in trialInfo">
-                     <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasMaxAge']}}</td>
-                     <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
-                     <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value']}}</td>
-             </tr>
-            </table>
+            </div>
         </div>
     </div>
 
+    <div class="aboutHeader">
+        <h3>About This Trial</h3>
+    </div>
+
+    <div class="aboutBox">
+        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
+            <strong>Overall Status</strong>
+            <br>
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
+            <br>
+                ________________________________________________________
+            <br>
+            <br>
+            <strong>Phase</strong>
+            <br>
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasPhase'][0]['@value']}}
+            <br>
+            ________________________________________________________
+            <br>
+            <br>
+            <strong>Starts</strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasStartDate'][0]['@value']}}
+            <br>
+            <strong>Ends</strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasCompletionDate'][0]['@value']}}
+            <br>
+            ________________________________________________________
+            <br>
+            <br>
+            <strong>Study Type</strong>
+            <br>
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasStudyType'][0]['@value']}}
+            <br>
+            ________________________________________________________
+            <br>
+            <br>
+            <strong>Conditions</strong>
+            <br>
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}
+            <br>
+            <br>
+        </h3>
+    </div>
+
+    <div class="eligibilityHeader">
+        <h3>
+            Eligibility
+        </h3>
+    </div>
+
+    <div class="eligibilityBox">
+        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
+        <strong>Sex</strong>
+        <br>
+        {{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}
+        <br>
+        ________________________________________________________
+        <br>
+        <br>
+        <strong>Age</strong>
+        {{trial['http://stjohns.edu/fullclinicaltrial/hasMinAge'][0]['@value']}}
+        <br>
+        ________________________________________________________
+        <br>
+        <br>
+        <strong>Healthy Volunteers</strong>
+        <br>
+        {{trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value']}}
+        <br>
+        ________________________________________________________
+        <br>
+        <br>
+        </h3>
+    </div>
+
+    <div class="fullCritHeader">
+        <h3>Full Eligibility Criteria</h3>
+    </div>
+
+    <div class="fullCritBox">
+        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCriteriaText'][0]['@value'] != null">
+            {{trial['http://stjohns.edu/fullclinicaltrial/hasCriteriaText'][0]['@value']}}
+        </h3>
+    </div>
+<br>
+<br>
+
 <div class="excludingTrialBox">
 
-    <span ng-repeat="trial in trialInfo">
+    <span ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
         <a ui-sref="findConflicts({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
             <button>See Conflicts</button>
         </a>
     </span>
 
-    <div ui-view>
-
-    </div>
 </div>
 </div>

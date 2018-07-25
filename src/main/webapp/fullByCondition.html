@@ -1,22 +1,22 @@
 <link rel="stylesheet" type="text/css" href="trialList.css">
 
 <div class="box">
-    <div class="header">
-        <h1>Search All Clinical Trials</h1>
+    <div class="header" ng-repeat="trial in trials | limitTo: 1 : 0" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
+        <h1>Trials found for : <strong>{{trial["http://stjohns.edu/fullclinicaltrial/hasCondition"][0]["@value"]}}</strong></h1>
     </div>
 
 
-<div class=buttonList>
-    <span ng-repeat="trial in trials">
+    <div class=buttonList>
+    <span ng-repeat="trial in trials" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
         <a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
             <button>
-                <u>Status:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
+                <strong>NCT: </strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
                 <br>
                 <br>
-                <u>Study Title:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+                <strong>Study Title: </strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
                 <br>
                 <br>
-                <u>Conditions:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}
+                <strong>Status: </strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
             </button>
         </a>
     </span>

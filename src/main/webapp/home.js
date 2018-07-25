@@ -1,4 +1,4 @@
-angular.module('clinicalTrialApp', ['ui.router', 'ngAnimate'])
+angular.module('clinicalTrialApp', ['ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -30,10 +30,8 @@ angular.module('clinicalTrialApp', ['ui.router', 'ngAnimate'])
             templateUrl: 'fullByCondition.html',
             controller: function ($scope, $http, $stateParams) {
                 $scope.condition = $stateParams.condition;
-                $scope.numTrials = "";
                 $http.get("http://localhost:8080/clin/clinical/getTrialsByCondition/" + $scope.condition).then(function(response) {
                     $scope.trials = response.data;
-                    $scope.numTrials = response.data.size;
                 });
             }
 
@@ -59,8 +57,18 @@ angular.module('clinicalTrialApp', ['ui.router', 'ngAnimate'])
                     $scope.conflictInfo = response.data;
                 });
             }
+        })
+
+        .state('viewTrials.descr', {
+            templateUrl: 'detailedDescrView.html',
+            controller: function ($scope, $http, $stateParams) {
+                $scope.nct = $stateParams.nct;
+                $http.get("http://localhost:8080/clin/clinical/getFullTrialInfo/" + $scope.nct).then(function (response) {
+                    $scope.trialInfo = response.data;
+                });
+            },
         });
 
-    $urlRouterProvider.otherwise('/searchBar');
 
+    $urlRouterProvider.otherwise('/searchBar');
 }]);

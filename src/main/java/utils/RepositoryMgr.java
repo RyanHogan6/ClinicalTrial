@@ -160,6 +160,9 @@ public class RepositoryMgr {
                 + "  ?t fct:hasBriefSummary ?briefSummary."
                 + "  ?t fct:hasDetailedDescrip ?detailDescrip."
                 + " ?t fct:hasOverallStatus ?overallStatus."
+                + "?t fct:hasOverallContactName ?overallConactName."
+                + "?t fct:hasOverallContactPhone ?overallContactPhone."
+                +  "?t fct:hasOverallContactEmail ?overallContactEmail."
                 + " ?t fct:hasPhase ?phase."
                 + "  ?t fct:hasStartDate ?startDate."
                 + " ?t fct:hasCompletionDate ?completeDate."
@@ -170,8 +173,28 @@ public class RepositoryMgr {
                 + " ?t fct:hasHealthyVolunteers ?volun."
                 + " ?t fct:hasGender ?gender."
                 + " ?t fct:hasMinAge ?minAge."
-                + " ?t fct:hasMaxAge ?maxAge. }");
-
+                + " ?t fct:hasMaxAge ?maxAge. "
+                + " ?t fct:hasIntervention ?inter."
+                + " ?inter fct:hasInterventionName ?intername."
+                + " ?inter fct:hasInterventionType ?intertype."
+                + " ?inter fct:hasInterventionDescr ?interdesc."
+                + " ?inter fct:hasInterventionArmGroupLabel ?armGrpLbl."
+                + "?inter fct:hasInterventionOtherName ?oname."
+                + "?t fct:hasLocation ?loc."
+                + " ?loc fct:hasLocFacility ?fac."
+                + "?loc fct:hasLocStatus ?stat."
+                + "?loc fct:hasLocCity ?loccity."
+                + " ?loc fct:hasLocCountry ?locCountry."
+                + " ?loc fct:hasLocState ?locstate."
+                + "?loc fct:hasLocZip ?locZip."
+                + "?loc fct:hasInvestigatorName ?invest."
+                + " ?loc fct:hasLocContactName ?loccontactname."
+                + "?loc fct:hasLocContactPhone ?locContactphone."
+                + " ?loc fct:hasLocContactEmail ?locContactemail."
+                + "?loc fct:hasLocBackupContactName ?locBkupName."
+                + "?loc fct:hasLocBackupContactPhone ?locBkupPhone."
+                + " ?loc fct:hasLocBackupContactEmail ?locBkupEmail."
+                + "}");
 
         GraphQueryResult results = gQuery.evaluate();
         return formatResults(results);
@@ -194,16 +217,41 @@ public class RepositoryMgr {
                 + "?t fct:hasBriefSummary ?briefSummary."
                 + "?t fct:hasDetailedDescrip ?detailDescrip."
                 + "?t fct:hasOverallStatus ?overallStatus."
+                + "?t fct:hasOverallContactName ?overallConactName."
+                + "?t fct:hasOverallContactPhone ?overallContactPhone."
+                +  "?t fct:hasOverallContactEmail ?overallContactEmail."
                 + "?t fct:hasPhase ?phase."
                 + "?t fct:hasStartDate ?startDate."
                 + "?t fct:hasCompletionDate ?completeDate."
+                + " ?t fct:hasCondition ?cond."
                 + "?t fct:hasStudyType ?studyType."
                 + "?t fct:hasSamplingMethod ?sampMeth."
                 + "?t fct:hasCriteriaText ?criteria."
                 + "?t fct:hasHealthyVolunteers ?volun."
                 + "?t fct:hasGender ?gender."
                 + "?t fct:hasMinAge ?minAge."
-                + "?t fct:hasMaxAge ?maxAge. }");
+                + "?t fct:hasMaxAge ?maxAge. "
+                +  "?t fct:hasIntervention ?inter."
+                +  "?inter fct:hasInterventionName ?intername."
+                +  "?inter fct:hasInterventionType ?intertype."
+                +  "?inter fct:hasInterventionDescr ?interdesc."
+                + " ?inter fct:hasInterventionArmGroupLabel ?armGrpLbl."
+                + "?inter fct:hasInterventionOtherName ?oname."
+                + "?t fct:hasLocation ?loc."
+                + " ?loc fct:hasLocFacility ?fac."
+                + "?loc fct:hasLocStatus ?stat."
+                + "?loc fct:hasLocCity ?loccity."
+                + " ?loc fct:hasLocCountry ?locCountry."
+                + " ?loc fct:hasLocState ?locstate."
+                + "?loc fct:hasLocZip ?locZip."
+                + "?loc fct:hasInvestigatorName ?invest."
+                + " ?loc fct:hasLocContactName ?loccontactname."
+                + "?loc fct:hasLocContactPhone ?locContactphone."
+                + " ?loc fct:hasLocContactEmail ?locContactemail."
+                + "?loc fct:hasLocBackupContactName ?locBkupName."
+                + "?loc fct:hasLocBackupContactPhone ?locBkupPhone."
+                + " ?loc fct:hasLocBackupContactEmail ?locBkupEmail."
+                + "}");
 
         GraphQueryResult results = gQuery.evaluate();
         return formatResults(results);
@@ -226,21 +274,61 @@ public class RepositoryMgr {
                 + "?t fct:hasCollabSponsor ?collabSponsor."
                 + "?t fct:hasBriefSummary ?briefSummary."
                 + "?t fct:hasDetailedDescrip ?detailDescrip."
+                + "?t fct:hasOverallStatus ?overallStatus."
+                + "?t fct:hasOverallContactName ?overallConactName."
+                + "?t fct:hasOverallContactPhone ?overallContactPhone."
+                +  "?t fct:hasOverallContactEmail ?overallContactEmail."
                 + "?t fct:hasPhase ?phase."
                 + "?t fct:hasStartDate ?startDate."
                 + "?t fct:hasCompletionDate ?completeDate."
+                + " ?t fct:hasCondition ?cond."
                 + "?t fct:hasStudyType ?studyType."
                 + "?t fct:hasSamplingMethod ?sampMeth."
                 + "?t fct:hasCriteriaText ?criteria."
                 + "?t fct:hasHealthyVolunteers ?volun."
                 + "?t fct:hasGender ?gender."
                 + "?t fct:hasMinAge ?minAge."
-                + "?t fct:hasMaxAge ?maxAge. }");
+                + "?t fct:hasMaxAge ?maxAge. "
+                + "?t fct:hasIntervention ?inter."
+                + "?inter fct:hasInterventionName ?intername."
+                + "?inter fct:hasInterventionType ?intertype."
+                + "?inter fct:hasInterventionDescr ?interdesc."
+                + " ?inter fct:hasInterventionArmGroupLabel ?armGrpLbl."
+                + "?inter fct:hasInterventionOtherName ?oname."
+                + "?t fct:hasLocation ?loc."
+                + " ?loc fct:hasLocFacility ?fac."
+                + "?loc fct:hasLocStatus ?stat."
+                + "?loc fct:hasLocCity ?loccity."
+                + " ?loc fct:hasLocCountry ?locCountry."
+                + " ?loc fct:hasLocState ?locstate."
+                + "?loc fct:hasLocZip ?locZip."
+                + "?loc fct:hasInvestigatorName ?invest."
+                + " ?loc fct:hasLocContactName ?loccontactname."
+                + "?loc fct:hasLocContactPhone ?locContactphone."
+                + " ?loc fct:hasLocContactEmail ?locContactemail."
+                + "?loc fct:hasLocBackupContactName ?locBkupName."
+                + "?loc fct:hasLocBackupContactPhone ?locBkupPhone."
+                + " ?loc fct:hasLocBackupContactEmail ?locBkupEmail."
+                + "}");
 
         GraphQueryResult results = gQuery.evaluate();
 
         return formatResults(results);
 
+    }
+
+    /**
+     * Get conditions by condition name
+     * @param condition
+     * @return name of condition
+     */
+    public String getConditionsByName(String condition) {
+        conn = repo.getConnection();
+
+        GraphQuery gQuery = conn.prepareGraphQuery("construct where {?t fct:hasCondition \"" + condition + "\"."
+                + " ?t fct:hasNCT ?nct. }");
+        GraphQueryResult results = gQuery.evaluate();
+        return formatResults(results);
     }
 
 

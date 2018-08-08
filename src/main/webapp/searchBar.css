@@ -10,19 +10,19 @@
 }
 
 .searchBar > h2{
-    font-size: 60px;
+    font-size: 50px;
     z-index: 2;
     color:  white;
     position: relative;
-    left: 170px;
+    left: 108px;
     font-weight: lighter;
     font-family:"Palatino Linotype", sans-serif;
 }
 
 .bar > input[type=text] {
 
-    padding-left: 20px;
-    width: 110%;
+    padding-left: 15px;
+    width: 108%;
     padding-bottom: 10px;
     height: 40px;
     font-size: 26px;
@@ -48,41 +48,99 @@
 }
 
 .buttons button:hover {
-    background-color: #00ff99;
+    background-color: darkseagreen;
     opacity: .8;
     color: black;
     font-weight: bold;
 }
 
+
 .boxRow {
     position: relative;
-    display: inline-flex;
     top: 350px;
     background-color: whitesmoke;
-    align-content: center;
+    width: 100%;
 }
 
-.boxRow > div {
-    border: 1px solid black;
+.textBox1 {
+    position: relative;
+    font-family: sans-serif;
+    padding-top: 30px;
+    left: 24%;
+    width: 40%;
+}
+
+.box1Img > img {
+    position: absolute;
+    top: 60px;
+    height: 20%;
     width: 20%;
-    text-align: center;
-    font-family: "Palatino Linotype", sans-serif;
-    background-color: black;
-    opacity: .8;
-    margin: 4%;
-    padding: 20px;
-
+    left: 8%;
 }
 
-.boxRow > div > h3 {
-    font-size: 25px;
-    color: white;
-     font-weight: lighter;
-}
-
-
-.boxRow > div > p {
-    font-size: 18px;
-    color: white;
+.textBox1 > h3 {
     font-weight: lighter;
+    color: black;
+    font-size: 22px;
 }
+
+.textBox1 > p {
+    font-weight: lighter;
+    color: black;
+    font-size: 18px;
+}
+
+.box2Img > img {
+    position: absolute;
+    top: 240px;
+    height: 20%;
+    width: 20%;
+    left: 35%;
+}
+.textBox2 {
+    position: relative;
+    font-family: sans-serif;
+    padding-top: 30px;
+    left: 50%;
+    width: 40%;
+}
+
+.textBox2 > h3 {
+    font-weight: lighter;
+    color: black;
+    font-size: 22px;
+}
+
+.textBox2 > p {
+    font-weight: lighter;
+    color: black;
+    font-size: 18px;
+}
+
+.box3Img > img{
+    position: absolute;
+    top: 430px;
+    height: 15%;
+    width: 15%;
+    left: 11%;
+}
+.textBox3 {
+    position: relative;
+    font-family: sans-serif;
+    padding-top: 30px;
+    left: 24%;
+    width: 40%;
+}
+
+.textBox3 > h3 {
+    font-weight: lighter;
+    color: black;
+    font-size: 22px;
+}
+
+.textBox3 > p {
+    font-weight: lighter;
+    color: black;
+    font-size: 18px;
+}
+

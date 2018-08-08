@@ -2,9 +2,8 @@ package utils;
 
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.rdf4j.StardogRepository;
-import org.eclipse.rdf4j.query.GraphQuery;
-import org.eclipse.rdf4j.query.GraphQueryResult;
-import org.eclipse.rdf4j.query.QueryResults;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.*;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -13,6 +12,7 @@ import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 /**
  * Simple interface to the Stardog repository.
@@ -331,6 +331,27 @@ public class RepositoryMgr {
         return formatResults(results);
     }
 
+    /**
+     * This returns a list of all conditions in the database, in a string with the format
+     * [cond1, cond2, ....] which is JSON array format
+     * @return JSON array
+     */
+    public String returnAllDistinctConditions() {
+        String resultStr= "[";
+        ArrayList<String> condList = new ArrayList<String>();
+        conn = repo.getConnection();
+        TupleQuery selectQuery = conn.prepareTupleQuery("select distinct ?cond where {?nct fct:hasCondition ?cond} order by ?cond");
+        TupleQueryResult result= selectQuery.evaluate();
+        while (result.hasNext()) {
+            BindingSet bindingSet = result.next();
+            Value cond = bindingSet.getValue("cond");
+            condList.add(cond.stringValue());
+            //resultStr = resultStr + " " + cond.stringValue();
+        }
+        String listStr = String.join(",",condList);
+        resultStr = resultStr + listStr +" ]";
+        return resultStr;
+    }
 
 
     private String formatResults(GraphQueryResult results) {

@@ -72,4 +72,12 @@ public class JerseyRepositoryMgr {
         return repoMgr.getConditionsByName(condition);
     }
 
+    @GET
+    @Path("/getAllConditions")
+    @Produces(MediaType.TEXT_HTML)
+    public String getAllConditionNames() {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        return repoMgr.returnAllDistinctConditions();
+    }
+
 }

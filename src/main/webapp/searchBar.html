@@ -1,43 +1,67 @@
-<link rel="stylesheet" type="text/css" href="searchBar.css">
+<head>
+    <link rel="stylesheet" type="text/css" href="searchBar.css">
+</head>
+
 <div class="searchBar">
     <h2>Search Trials By Condition</h2>
     <br>
 
     <div class="bar">
-        <input type="text" ng-model="name" placeholder="search...">
+     <input type="text" name="country" id="country" ng-model="country" ng-keyup="cname(country)" placeholder="search.." />
 
+
+            <ul class="list-group" ng-hide="hidethis">
+                <li class="list-group-item" ng-repeat="country_info in filterCountry track by $index" ng-click="fillInputBox(country_info)">
+                    <h4>{{country_info}}</h4>
+                </li>
+            </ul>
     </div>
 
     <div class="buttons">
-        <a ui-sref="recruitingTrials({condition: name})" ui-sref-active="active">
+        <a ui-sref="recruitingTrials({condition: country})" ui-sref-active="active">
             <button>Recruiting</button>
         </a>
 
-        <a ui-sref="allTrials({condition: name})" ui-sref-active="active">
+        <a ui-sref="allTrials({condition: country})" ui-sref-active="active">
             <button>All Trials</button>
         </a>
     </div>
 
     <br>
-
 </div>
 
 
 <div class="boxRow">
+
+
+    <div class="box1Img">
+        <img src="https://media-public.canva.com/MABXSNFT41Q/1/screen.svg">
+    </div>
+
     <div class="textBox1">
-        <h3>Head 1</h3>
-        <p> has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cite</p>
+        <h3>What are clinical studies?</h3>
+        <p>Clinical studies includes research by utilizing human volunteers, or participants, to further medicinal learning. The two primary forms of clinical studies are interventional studies and observational studies</p>
     </div>
 
+    <div class="box2Img">
+        <img src="https://media-public.canva.com/MABWTSPQTuk/1/screen.svg">
+    </div>
     <div class="textBox2">
-        <h3>Head 1</h3>
-        <p> has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cite</p>
+        <h3>What are the benefits?</h3>
+        <p>Clinical studies are important to the further development of medical research and treatments for different types of diseases, illness's and procedures. As well as facilitating new ways to detect, diagnose, and reduce the risk of disease.</p>
     </div>
 
-    <div class="textBox2">
-        <h3>Head 1</h3>
-        <p> has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cite</p>
+    <div class="box3Img">
+        <img src="https://media-public.canva.com/MABWTbve3bs/1/screen.svg">
+    </div>
+    <div class="textBox3">
+        <h3>What is the impact?</h3>
+        <p>Clinical studies have helped medical researchers gain a further understanding of treatments and procedures to help diagnose patients more accurately and make medical discoveries that have gone past the scope of the studies</p>
     </div>
 
 </div>
+
+
+<p id="pText" class="text-info">You Selected <strong>{{ country }}</strong></p>
+
 

@@ -6,12 +6,24 @@
 
 <div class="backBox">
 
+    <div class="header">
+        <h3>Study Details Below</h3>
+    </div>
+
+    <div class="navOptions">
+        <a ui-sref="searchBar">
+            New Search
+        </a>
+        <br>
+        <br>
+        <a href="#" onclick="history.back()">
+           Back To Results
+        </a>
+    </div>
 
     <div class="briefTitleBox">
         <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value'] != null">
-            Official Title
-            <br>
-            <br>
+            <u>Official Title:</u>
             {{trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value']}}
         </h3>
     </div>
@@ -45,43 +57,46 @@
         <h3>About This Trial</h3>
     </div>
 
-    <div class="aboutBox">
-        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
-            <strong>Overall Status</strong>
-            <br>
-            {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
-            <br>
-                ________________________________________________________
-            <br>
-            <br>
-            <strong>Phase</strong>
-            <br>
-            {{trial['http://stjohns.edu/fullclinicaltrial/hasPhase'][0]['@value']}}
-            <br>
-            ________________________________________________________
-            <br>
-            <br>
-            <strong>Starts</strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasStartDate'][0]['@value']}}
-            <br>
-            <strong>Ends</strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasCompletionDate'][0]['@value']}}
-            <br>
-            ________________________________________________________
-            <br>
-            <br>
-            <strong>Study Type</strong>
-            <br>
-            {{trial['http://stjohns.edu/fullclinicaltrial/hasStudyType'][0]['@value']}}
-            <br>
-            ________________________________________________________
-            <br>
-            <br>
-            <strong>Conditions</strong>
-            <br>
-            {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}
-            <br>
-            <br>
-        </h3>
+    <div class="tableBox">
+        <div class="tableContent">
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <th>Phase</th>
+                    <th>Starts - Ends</th>
+                    <th>Study Type</th>
+                </tr>
+
+                <tr ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value'] != null">
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasPhase'][0]['@value']}}</td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasStartDate'][0]['@value']}} - <span ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCompletionDate'][0]['@value']">{{trial['http://stjohns.edu/fullclinicaltrial/hasCompletionDate'][0]['@value']}}</span>
+                        <span ng-if="!trial['http://stjohns.edu/fullclinicaltrial/hasCompletionDate'][0]['@value']">N/A</span></td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasStudyType'][0]['@value']}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
+
+    <div class="conditionsHeader">
+        <h3>List of Conditions</h3>
+    </div>
+
+
+        <div class="tableBox">
+            <div class="tableContent">
+                <table>
+                    <tr>
+                       <th>Conditions</th>
+                    </tr>
+
+                    <tr ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
+                        <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasCondition']['0']['@value']}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
 
     <div class="eligibilityHeader">
         <h3>
@@ -89,29 +104,24 @@
         </h3>
     </div>
 
-    <div class="eligibilityBox">
-        <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
-        <strong>Sex</strong>
-        <br>
-        {{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}
-        <br>
-        ________________________________________________________
-        <br>
-        <br>
-        <strong>Age</strong>
-        {{trial['http://stjohns.edu/fullclinicaltrial/hasMinAge'][0]['@value']}}
-        <br>
-        ________________________________________________________
-        <br>
-        <br>
-        <strong>Healthy Volunteers</strong>
-        <br>
-        {{trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value']}}
-        <br>
-        ________________________________________________________
-        <br>
-        <br>
-        </h3>
+
+    <div class="tableBox">
+        <div class="tableContent">
+            <table>
+                <tr>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Healthy Volunteers</th>
+                </tr>
+
+                <tr ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value'] != null">
+                    <td ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasMaxAge'][0]['@value']">{{trial['http://stjohns.edu/fullclinicaltrial/hasMaxAge'][0]['@value']}}</td>
+                    <td ng-if="!trial['http://stjohns.edu/fullclinicaltrial/hasMaxAge'][0]['@value']">N/A</td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value']}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div class="fullCritHeader">

@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    font-family: "Palatino Linotype";
     font-weight: lighter;
 }
 
@@ -17,78 +16,42 @@ body {
 
 .backBox {
     position: relative;
-    top: 70px;
+    top: 80px;
     background: whitesmoke;
     width: 100%;
+    padding-bottom: 100px;
+
 }
 
 .header {
     position: relative;
-    width: 380px;
-    height: 60px;
-    background-color: darkseagreen;
-    border-radius: 50px;
-    color: black;
-    left: 20.5%;
-    opacity: .7;
-    top: 65px;
+    width: 58%;
+    padding-left: 21%;
 }
-
 .header > h3 {
-    font-size: 36px;
-    color: black;
-    padding-top: 12px;
+    padding-top: 1px;
+    font-size: 40px;
+    color: darkseagreen;
     font-family: sans-serif;
     font-weight: lighter;
-    padding-left: 20px;
+    border-bottom: 1px solid black;
 }
-
 
 .briefTitleBox > h3 {
     position: relative;
-    top: 50px;
-    font-size: 24px;
+    top: 40px;
+    font-size: 22px;
     font-weight: lighter;
-    left: 20%;
+    left: 21%;
     width: 58%;
     font-family:"Palatino Linotype", sans-serif;
 }
 
 .descriptionHeader > h3 {
-    padding-left: 350px;
-    padding-top: 100px;
+    padding-left: 21%;
+    padding-top: 75px;
     font-size: 24px;
     font-weight: lighter;
-    left: 20%;
-    font-family:"Palatino Linotype", sans-serif;
-}
-.mainContentBox {
-    position: relative;
-    top: 80px;
-    align-content: center;
-    background-color: white;
-    box-shadow: 5px 10px 18px dimgrey;
-    border-radius: 3px;
-    opacity: .91;
-    font-weight: lighter;
-    left: 20%;
-    width: 58%;
-    font-family:"Palatino Linotype", sans-serif;
-}
-
-.mainContent {
-    text-align: left;
-    opacity: .91;
-    font-weight: lighter;
-    font-family:"Palatino Linotype", sans-serif;
-}
-
-.mainContent > h3 {
-    font-size: 20px;
-    font-weight: lighter;
-    padding-left: 60px;
-    padding-top:  15px;
-    padding-bottom: 15px;
     font-family:"Palatino Linotype", sans-serif;
 }
 
@@ -101,14 +64,17 @@ body {
     opacity: .91;
     font-family:"Palatino Linotype", sans-serif;
     left: 21%;
-    width: 58%;
+    width: 59%;
 }
 
 .descriptionBox > h3 {
     text-align: left;
-    padding: 60px;
+    padding-top: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
     font-weight: lighter;
     font-family:"Palatino Linotype", sans-serif;
+    white-space: pre-line;
 }
 
 .detailedDescrButton {
@@ -116,25 +82,25 @@ body {
 }
 .detailedDescrButton button {
     position: relative;
-    width: 180px;
-    left: 39%;
+    width: 250px;
+    left: 36%;
     height: 70px;
     font-family:"Palatino Linotype", sans-serif;
-    font-weight: lighter;
-    font-size: 20px;
+    font-size: 22px;
     box-shadow: 5px 10px 18px dimgrey;
-    background-color: white;
+    border-radius: 50px;
+    background-color: darkseagreen;
 
 }
 
 .detailedDescrButton button:hover {
     color: black;
-    font-weight: lighter;
     background-color: darkseagreen;
+    box-shadow: 5px 10px 18px white;
 }
 
 .aboutHeader > h3{
-    padding-left: 350px;
+    padding-left: 21%;
     padding-top: 100px;
     font-size: 24px;
     font-weight: lighter;
@@ -162,8 +128,8 @@ body {
 }
 
 .eligibilityHeader > h3 {
-    padding-left: 350px;
-    padding-top: 100px;
+    padding-left: 21%;
+    padding-top: 50px;
     font-size: 24px;
     font-weight: lighter;
     left: 62%;
@@ -190,7 +156,7 @@ body {
 }
 
 .fullCritHeader > h3{
-    padding-left: 350px;
+    padding-left: 21%;
     padding-top: 100px;
     font-size: 24px;
     font-weight: lighter;
@@ -215,6 +181,7 @@ body {
     padding: 60px;
     font-weight: lighter;
     font-family:"Palatino Linotype", sans-serif;
+    white-space: pre-line;
 }
 
 .fullDescription > h3 {
@@ -225,7 +192,7 @@ body {
 }
 .table1Header > h3 {
     padding-left: 325px;
-    padding-top: 100px;
+    padding-top: 50px;
     font-size: 24px;
     font-weight: lighter;
     font-family:"Palatino Linotype", sans-serif;
@@ -244,18 +211,13 @@ body {
 .tableBox {
     position: relative;
     align-content: center;
-    background-color: white;
-    box-shadow: 5px 10px 18px dimgrey;
-    border-radius: 3px;
-    opacity: .91;
     left: 21%;
-    width: 51%;
-    padding: 60px;
+    width: 58%;
 }
 
 .tableContent {
     text-align: left;
-    opacity: .91;
+    box-shadow: 2px 2px 2px 2px #bfbfbf;
 }
 
 .tableBox > h2 {
@@ -273,42 +235,45 @@ th {
     background-color: darkseagreen;
     text-align: center;
     color: black;
-    padding: 15px;
-    width: 70px;
-    font-size: 20px;
+    padding: 10px;
+    width: 55px;
+    font-size: 19px;
     font-weight: bold;
 }
 
 td {
     text-align: center;
-    padding: 15px;
-    width: 70px;
-    font-size: 18px;
+    padding: 10px;
+    width: 55px;
+    font-size: 17px;
+    font-weight: normal;
+    background-color: white;
+}
+
+.excludingTrialBox {
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 .excludingTrialBox button {
     position: relative;
-    top: 320px;
-    align-content: center;
     background-color: darkseagreen;
     box-shadow: 2px 2px 2px black;
-    border-radius: 3px;
+    border-radius: 50px;
     opacity: .91;
-    left: 39%;
+    left: 41%;
     width: 20%;
     height: 80px;
-    font-size: 40px;
+    font-size: 36px;
 }
 
 .excludingTrialBox button:hover {
-    background-color: ghostwhite;
-    border: 2px solid black;
-    box-shadow: 5px 10px 18px darkseagreen;
+    box-shadow: 5px 10px 18px white;
 }
 
 .conditionsHeader > h3 {
-    padding-left: 350px;
-    padding-top: 100px;
+    padding-left: 21%;
+    padding-top: 50px;
     font-size: 24px;
     font-weight: lighter;
     left: 62%;
@@ -332,4 +297,69 @@ td {
     padding: 60px;
     font-weight: lighter;
     font-family:"Palatino Linotype", sans-serif;
+}
+
+.interventionHeader > h3 {
+    padding-left: 21%;
+    padding-top: 50px;
+    font-size: 24px;
+    font-weight: lighter;
+    left: 62%;
+    font-family:"Palatino Linotype", sans-serif;
+}
+
+.mapBox {
+    position: relative;
+    width: 90%;
+    height: 500px;
+}
+
+#map {
+    position: relative;
+    height: 400px;
+    width: 40%;
+    left: 60%;
+}
+
+.addressBox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    color: black;
+}
+
+.nctBox > h3 {
+    position: relative;
+    top: 20px;
+    font-size: 22px;
+    font-weight: lighter;
+    left: 21%;
+    width: 58%;
+    font-family: sans-serif;
+}
+
+.fullCritButton {
+    padding-top: 45px;
+    padding-bottom: 30px;
+}
+
+.fullCritButton button {
+    position: relative;
+    width: 250px;
+    left: 37%;
+    height: 70px;
+    font-family:"Palatino Linotype", sans-serif;
+    font-size: 22px;
+    box-shadow: 5px 10px 18px dimgrey;
+    border-radius: 50px;
+    background-color: darkseagreen;
+
+}
+
+.fullCritButton button:hover {
+    color: black;
+    background-color: darkseagreen;
+    box-shadow: 5px 10px 18px white;
 }

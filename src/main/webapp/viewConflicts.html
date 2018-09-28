@@ -1,14 +1,43 @@
+<link rel="stylesheet" type="text/css" href="viewConflicts.css">
 
-<head>
-    <meta charset="UTF-8">
-    <title>View Conflicts</title>
-</head>
-<body>
-    <h1>NCT ID's</h1>
+<div class="backBox">
 
-    <div>
-        <span ng-repeat="conflict in conflictInfo">
-            <h3>{{conflict['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}</h3>
-        </span>
+    <div class="navOptions">
+        <br>
+        <a href="#" style="padding-left: 30px; font-size: 17px; color: black; font-weight: bold" onclick="history.back()">
+            Back To Results
+        </a>
+        <br>
     </div>
-</body>
+
+    <div class="infoBox">
+        <h3>Conflicts in clinical trials allow you to view trials that may conflict with ones you may have participated in. The list
+            below shows conflicting trials with trial number {{nct}}.
+         </h3>
+    </div>
+
+    <div class="titleHeader">
+        <h3>View conflicts for: <span style="color: darkseagreen; font-weight: lighter">{{nct}}</span></h3>
+    </div>
+
+    <div class="tableBox">
+
+        <div class="tableContent">
+            <table>
+                <tr>
+                    <th>NCT</th>
+                    <th>Criterion</th>
+                    <th>Criteria text</th>
+                </tr>
+
+                <tr ng-repeat="trial in conflictInfo" ng-if="trial['http://stjohns.edu/clinicaltrialproj/hasConflictNCT'][0]['@value'] != null">
+                    <td><a ui-sref="viewTrials({nct: trial['http://stjohns.edu/clinicaltrialproj/hasConflictNCT'][0]['@value']})">{{trial['http://stjohns.edu/clinicaltrialproj/hasConflictNCT'][0]['@value']}}</a></td>
+                    <td>{{trial['http://stjohns.edu/clinicaltrialproj/hasCriterion'][0]['@value']}}</td>
+                    <td>{{trial['http://stjohns.edu/clinicaltrialproj/hasCriteriaCoveredText'][0]['@value']}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+

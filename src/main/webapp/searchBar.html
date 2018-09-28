@@ -3,32 +3,52 @@
 </head>
 
 <div class="searchBar">
+
     <h2>Search Trials By Condition</h2>
     <br>
 
+    <!--
+        - The search bar that holds the value of the search condition.
+        - When a key is typed, Angular JS calls the keyup directive that
+            accesses the cname() function that controls the input
+    -->
     <div class="bar">
-     <input type="text" name="country" id="country" ng-model="country" ng-keyup="cname(country)" placeholder="search.." />
-
-
-            <ul class="list-group" ng-hide="hidethis">
-                <li class="list-group-item" ng-repeat="country_info in filterCountry track by $index" ng-click="fillInputBox(country_info)">
-                    <h4>{{country_info}}</h4>
-                </li>
-            </ul>
+     <input type="text" name="condition" id="condition" ng-model="condition" ng-keyup="cname(condition)" placeholder="search.." />
     </div>
 
-    <div class="buttons">
-        <a ui-sref="recruitingTrials({condition: country})" ui-sref-active="active">
-            <button>Recruiting</button>
+    <!--
+        - This div holds the dropdown box when a user begins typing in the search bar.
+        - We use ng-hide to show and hide the box when the user is either typing, not typing
+             or has selected a condition in the drop down box.
+        - ng-repeat directive is used to display the conditions that the user is typing by autocomplete
+        - When a value is selected in the box, the ng-click directive will place the selected value in the search bar.
+    -->
+    <div class="list-group" ng-hide="!hideBox">
+        <div class="list-group-item" ng-hide="hidethis" ng-repeat="condition_name in filterCondition track by $index" ng-click="fillInputBox(condition_name)">
+            {{condition_name}}
+        </div>
+    </div>
+
+    <!--
+        - These are the two buttons which you are able to search by Recruiting Trials or
+            All Trials.
+        - Ng-init is used to disable the buttons until a value is selected in the search box
+        - The anchor tag ui-sref is used with AngularJS Ui router in order to pass the name of
+            the condition selected to home.js so it has a value to search
+    -->
+    <div class="buttons" ng-init="disable=true">
+        <a ui-sref="recruitingTrials({condition: condition})" ui-sref-active="active">
+            <button ng-disabled="disable">Recruiting Trials</button>
         </a>
 
-        <a ui-sref="allTrials({condition: country})" ui-sref-active="active">
-            <button>All Trials</button>
+        <a ui-sref="allTrials({condition: condition})" ui-sref-active="active">
+            <button ng-disabled="disable">All Trials</button>
         </a>
     </div>
 
     <br>
-</div>
+    </div>
+
 
 
 <div class="boxRow">
@@ -60,8 +80,5 @@
     </div>
 
 </div>
-
-
-<p id="pText" class="text-info">You Selected <strong>{{ country }}</strong></p>
 
 

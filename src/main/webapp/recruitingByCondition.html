@@ -2,20 +2,24 @@
 
 
 <div class="box">
+
     <div class="navOptions">
-        <a style="padding-left: 100px; padding-top: 50px; color: darkblue;" ui-sref="searchBar">
+        <br>
+        <br>
+        <a ui-sref="searchBar" style="padding-left: 30px; font-size: 17px; color: black; font-weight: bold">
             New Search
         </a>
     </div>
 
     <div class="headerBubble" ng-repeat="trial in trials | limitTo: 1 : 0" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
-        <h2>Trials found for: </h2> <h3>{{trial["http://stjohns.edu/fullclinicaltrial/hasCondition"][0]["@value"]}}</h3>
+        <h2>Trials found for: <span style="color: darkseagreen; font-size: 35px; ">{{trial["http://stjohns.edu/fullclinicaltrial/hasCondition"][0]["@value"]}}</span> </h2>
     </div>
+
 
     <div class=buttonList>
     <span ng-repeat="trial in trials" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
         <a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
-            <button>
+            <button style="background-color: white;">
                 <span style="font-weight: lighter;">NCT:</span> {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
                 <br>
                 <br>
@@ -29,4 +33,7 @@
         </a>
     </span>
     </div>
+
+
 </div>
+

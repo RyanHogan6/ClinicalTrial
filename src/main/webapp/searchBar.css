@@ -1,54 +1,60 @@
 
 .searchBar {
+    background-color: black;
     position: relative;
+    left: 22%;
     top: 100px;
-    left: 20%;
-    height: 300px;
-    width: 42%;
-    padding: 10px 200px 50px 100px;
-    font-family:"Palatino Linotype", sans-serif;
+    height: 350px;
+    width: 50%;
+    font-family: sans-serif;
+    opacity: 0.8;
+    padding: 30px 30px;
+    border-radius: 20px;
+    bottom: 100px;
 }
 
 .searchBar > h2{
-    font-size: 50px;
+    font-size: 35px;
     z-index: 2;
     color:  white;
     position: relative;
-    left: 108px;
     font-weight: lighter;
     font-family:"Palatino Linotype", sans-serif;
+    padding-left: 25%;
 }
 
 .bar > input[type=text] {
-
-    padding-left: 15px;
-    width: 108%;
+    width: 95%;
     padding-bottom: 10px;
     height: 40px;
     font-size: 26px;
     color: black;
     box-shadow: 5px 10px 18px #888888;
     font-weight: lighter;
-    font-family:"Palatino Linotype", sans-serif;
+    font-family: sans-serif;
+    border-radius: 10px;
 
 }
 
 .buttons button {
     position: relative;
     display: inline-block;
-    width: 310px;
+    width: 30%;
     height: 40px;
     top: 50px;
-    font-size: 20px;
-    color: black;
-    left: 90px;
+    font-size: 16px;
+    color: white;
     font-family: "Palatino Linotype", sans-serif;
-    font-weight: lighter;
+    font-weight: bold;
+    border-radius: 10px;
+    left: 20%;
+    text-decoration: none;
+    background-color: darkseagreen;
 
 }
 
 .buttons button:hover {
-    background-color: darkseagreen;
+    background-color: white;
     opacity: .8;
     color: black;
     font-weight: bold;
@@ -57,7 +63,7 @@
 
 .boxRow {
     position: relative;
-    top: 350px;
+    top: 200px;
     background-color: whitesmoke;
     width: 100%;
 }
@@ -67,7 +73,7 @@
     font-family: sans-serif;
     padding-top: 30px;
     left: 24%;
-    width: 40%;
+    width: 30%;
 }
 
 .box1Img > img {
@@ -144,3 +150,43 @@
     font-size: 18px;
 }
 
+.list-group {
+    position: relative;
+    width: 95%;
+    background-color: white;
+    z-index: 99999;
+    overflow: auto;
+    height: 100%;
+    opacity: 1;
+}
+
+.list-group-item {
+    color: black;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    text-align: left;
+    align-content: left;
+    padding: 10px;
+}
+
+.welcomeBox {
+    position: relative;
+    left: 0;
+    width: 30%;
+    height: 300px;
+    top: 150px;
+    background-color: #fafafa;
+    color: black;
+    opacity: .98;
+    border-radius: 10px;
+
+}
+
+.footer {
+
+}
+
+.container {
+    position: relative;
+}

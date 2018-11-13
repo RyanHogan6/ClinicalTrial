@@ -2,6 +2,15 @@
     <link rel="stylesheet" type="text/css" href="searchBar.css">
 </head>
 
+
+<div class="welcomeBox">
+    <h2>Welcome to clinical trial view</h2>
+    <br>
+    <h3>Search clinical trials to find all trials that are being recruited, completed, or
+    have already been conducted. Clinical trials are an important gateway to making vital
+    medical discoveries</h3>
+</div>
+
 <div class="searchBar">
 
     <h2>Search Trials By Condition</h2>
@@ -13,7 +22,7 @@
             accesses the cname() function that controls the input
     -->
     <div class="bar">
-     <input type="text" name="condition" id="condition" ng-model="condition" ng-keyup="cname(condition)" placeholder="search.." />
+     <input type="text" name="condition" id="condition" ng-model="condition" ng-keyup="cname(condition)" placeholder="Enter Condition.." />
     </div>
 
     <!--
@@ -38,11 +47,11 @@
     -->
     <div class="buttons" ng-init="disable=true">
         <a ui-sref="recruitingTrials({condition: condition})" ui-sref-active="active">
-            <button ng-disabled="disable">Recruiting Trials</button>
+            <button ng-disabled="disable" style="text-decoration: none;">Recruiting Trials</button>
         </a>
 
         <a ui-sref="allTrials({condition: condition})" ui-sref-active="active">
-            <button ng-disabled="disable">All Trials</button>
+            <button ng-disabled="disable" style="text-decoration: none;">All Trials</button>
         </a>
     </div>
 

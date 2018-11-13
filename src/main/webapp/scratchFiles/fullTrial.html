@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Full Trial</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="searchFullTrial.css">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Search Clinical Trials By NCTID</h1>
+</div>
+
+<div class=SearchBox ng-app="myApp" ng-controller="fullTrialsByNCT">
+
+    <div class="head">
+    <h4>Enter NCTID Name:</h4>
+    <input type="text" ng-model="nct">
+    <button ng-click="findTrialsByNCT()">Submit</button>
+
+
+        <div class="headerBox">
+        <span ng-repeat="trial in trials | limitTo : 1 : 0">
+            <button ng-click="findTrialInfo(trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'])">
+                <u>Status:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
+                <br>
+                <br>
+                <u>Study Title:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+                <br>
+                <br>
+                <u>Conditions:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}
+            </button>
+        </span>
+        </div>
+
+
+    <div class="titleBar">
+        <h1>Clinical Trial Details</h1>
+    </div>
+
+    <div class="mainContent">
+
+        <h3 ng-repeat="trial in trialInfo">
+            <strong><u>Official Title:</u></strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value']}}
+        </h3>
+
+
+    <br>
+
+    <div>
+
+        <h3 ng-repeat="trial in trialInfo">
+            <strong><u>NCTID:</u></strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
+        </h3>
+    </div>
+
+    <br>
+
+    <div>
+        <h3 ng-repeat="trial in trialInfo">
+            <strong><u>Purpose:</u></strong> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefSummary'][0]['@value']}}
+        </h3>
+    </div>
+    </div>
+
+    <br>
+    <br>
+
+    <strong>Overview:</strong>
+    <table cellspacing="4" cellpadding="4">
+        <tr>
+            <th>Sex</th>
+            <th>Age</th>
+            <th>Status</th>
+            <th>Condition</th>
+        </tr>
+
+        <tr ng-repeat="trial in trialInfo">
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasMinAge'][0]['@value']}}</td>
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</td>
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}</td>
+        </tr>
+
+    </table>
+
+    <br>
+    <br>
+
+    <strong>Eligibility:</strong>
+    <table cellspacing="4" cellpadding="4">
+        <tr>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Healthy Volunteers</th>
+        </tr>
+
+        <tr ng-repeat="trial in trialInfo">
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasMaxAge'][0]['@value']}}</td>
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasGender'][0]['@value']}}</td>
+            <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasHealthyVolunteers'][0]['@value']}}</td>
+        </tr>
+    </table>
+
+</div>
+</div>
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('fullTrialsByNCT', function($scope, $http) {
+
+        $scope.nct = "";
+
+        $scope.findTrialsByNCT = function () {
+            $http.get("http://localhost:8080/clin/clinical/getFullTrialInfo/" + $scope.nct).then(function(response) {
+                $scope.trials = response.data;
+            });
+        };
+
+        $scope.findTrialInfo = function (nct) {
+            $http.get("http://localhost:8080/clin/clinical/getFullTrialInfo/" + nct).then(function(response) {
+                $scope.trialInfo = response.data;
+
+            });
+        };
+    });
+</script>
+
+
+</body>
+</html>
+

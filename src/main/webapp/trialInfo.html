@@ -19,6 +19,24 @@
         </a>
     </div>
 
+    <br>
+    <br>
+
+    <div class="conflictsBox">
+        <h2>Find Conflicts</h2>
+        <br>
+        <h3>Explore conflicts below to find out which trials you may be excluded from</h3>
+
+        <div class="excludingTrialBox">
+        <span ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null" ng-init="!hideConflicts(trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'])">
+
+            <a ui-sref="findConflicts({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
+                <button ng-disabled="!empty">Search</button>
+            </a>
+        </span>
+        </div>
+    </div>
+
     <div class="header">
         <h3>Study Details Below</h3>
     </div>
@@ -37,6 +55,7 @@
             {{trial['http://stjohns.edu/fullclinicaltrial/hasOfficialTitle'][0]['@value']}}
         </h3>
     </div>
+
 
     <div class="aboutHeader">
         <h3>About This Trial</h3>
@@ -102,7 +121,7 @@
                 </tr>
 
                 <tr ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
-                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}</td>
+                    <td>{{filterCondition(trial['http://stjohns.edu/fullclinicaltrial/hasCondition'])}}</td>
                 </tr>
             </table>
         </div>
@@ -141,7 +160,7 @@
         <div class="fullCritButton">
              <span ng-repeat="trial in trialInfo | limitTo : 1 : 0">
                 <a ui-sref=".fullEligCrit({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
-                    <button>View Eligibility Criteria</button>
+                    <button>Eligibility Criteria</button>
                 </a>
              </span>
 
@@ -175,17 +194,36 @@
         </div>
     </div>
 
-
-    <div class="excludingTrialBox">
-        <span ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null" ng-init="!hideConflicts(trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'])">
-
-            <a ui-sref="findConflicts({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
-                <button ng-disabled="!empty">View Conflicts</button>
-            </a>
-        </span>
+    <div class="locationsHeader">
+        <h3>Locations</h3>
     </div>
 
-    <div class="navOptions" style="display: inline-block; padding-left: 43%; padding-bottom: 100px;">
+    <div class="tableBox">
+        <div class="tableContent">
+            <table>
+                <tr>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Facility</th>
+                </tr>
+
+                <tr ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasLocCountry'][0]['@value'] != null">
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasLocCountry'][0]['@value']}}</td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasLocCity'][0]['@value']}}</td>
+                    <td ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasLocState'][0]['@value']">{{trial['http://stjohns.edu/fullclinicaltrial/hasLocState'][0]['@value']}}</td>
+                    <td ng-if="!trial['http://stjohns.edu/fullclinicaltrial/hasLocState'][0]['@value']">N/A</td>
+                    <td ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasLocState'][0]['@value']">{{trial['http://stjohns.edu/fullclinicaltrial/hasLocZip'][0]['@value']}}</td>
+                    <td ng-if="!trial['http://stjohns.edu/fullclinicaltrial/hasLocState'][0]['@value']">N/A</td>
+                    <td>{{trial['http://stjohns.edu/fullclinicaltrial/hasLocFacility'][0]['@value']}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="navOptions" style="display: inline-block; padding-left: 50%; padding-bottom: 100px;">
         <br>
         <br>
         <a ui-sref="searchBar" style="font-size: 19px; color: black; font-weight: bold; padding-right: 30px">

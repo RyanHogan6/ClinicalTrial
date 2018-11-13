@@ -45,7 +45,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                 $scope.nct = $stateParams.nct;
                 $http.get("http://localhost:8080/clin/clinical/getFullTrialInfo/" + $scope.nct).then(function (response) {
                     $scope.trialInfo = response.data;
+
                 });
+
+                $scope.filterCondition = function(condition) {
+                    var list = JSON.stringify(condition);
+                    return list.replace(/{/g, '').replace(/"/g, ' ').replace(/@value/g, '').replace(/:/g, '').replace(/}/g, '').replace('[', '').replace(']', '');
+                };
 
                 $scope.goBack = function() {
                     $window.history.back();
@@ -99,11 +105,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                     $http.get("http://localhost:8080/clin/clinical/getConflicts/" + nct).then(function (response) {
                         $scope.empty = response.data;
 
-                        console.log($scope.empty);
                         if ($scope.empty.length === 0) {
                             $scope.empty = false;
                         }
-                        console.log($scope.empty);
                     });
                 }
 
@@ -118,6 +122,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                 $http.get("http://localhost:8080/clin/clinical/getConflicts/" + $scope.nct).then(function (response) {
                     $scope.conflictInfo = response.data;
                 });
+
+
 
             }
         })
@@ -170,6 +176,7 @@ app.controller('autoCompleteController', function($scope, $http) {
     $http.get('http://localhost:8080/clin/clinical/getAllConditions').then(function(response) {
           data = response.data.toString();
           temp = data.toString().replace("[", "").replace("]", "").split(",");
+          console.log(temp);
     });
 
 
@@ -228,4 +235,3 @@ app.controller('autoCompleteController', function($scope, $http) {
     }
 
 });
-

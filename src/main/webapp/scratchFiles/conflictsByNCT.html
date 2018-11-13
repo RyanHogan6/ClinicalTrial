@@ -18,9 +18,13 @@
     <input type="text" ng-model="nct">
     <button ng-click="getConflicts()">Submit</button>
 
+    <h3 ng-repeat="trial in trials | limitTo : 1 : 0">
+       {{trial["http://stjohns.edu/clinicaltrialproj/hasNCT"][0]["@value"]}}
+    </h3>
+
     <table cellspacing="4" cellpadding="4">
         <tr>
-            <th>NCTID</th>
+            <th>Conflict NCTID</th>
             <th>Conflicts</th>
             <th>Criterion</th>
             <th>Covered Int Text</th>
@@ -29,7 +33,7 @@
         </tr>
 
         <tr ng-repeat = "trial in trials">
-            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasNCT"][0]["@value"]}}</td>
+            <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasConflictNCT"][0]["@value"]}}</td>
             <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasIntCoveredText"][0]["@value"]}}</td>
             <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasCriterion"][0]["@value"]}}</td>
             <td>{{trial["http://stjohns.edu/clinicaltrialproj/hasIntCoveredText"][0]["@value"]}}</td>

@@ -19,11 +19,11 @@
     <div class=buttonList>
     <span ng-repeat="trial in trials" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
         <a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
-            <button style="background-color: white;">
-                <span style="font-weight: lighter;">NCT:</span> {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
+            <button style="background-color: white; border-bottom: 1px solid black;">
+                <span style="font-weight: lighter;">NCT</span>: {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
                 <br>
                 <br>
-                 <span style="font-weight: lighter;">Study Title:</span> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+                 <span style="font-weight: lighter; border-bottom: 1px solid black;">Study Title</span>: {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
                 <br>
                 <br>
                 <div class="statusBubble">

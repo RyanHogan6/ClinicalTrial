@@ -20,7 +20,7 @@
 
     <li ng-repeat="trial in trials | limitTo : 1: 0">
         <span>{{trial['http://stjohns.edu/clinicaltrialproj/hasNCT'][0]['@value']}}</span>
-         <button ng-click="findTrialInfo(trial['http://stjohns.edu/clinicaltrialproj/hasNCT'][0]['@value'])">Get Trial Info</button>
+        <button ng-click="findTrialInfo(trial['http://stjohns.edu/clinicaltrialproj/hasNCT'][0]['@value'])">Get Trial Info</button>
     </li>
 
     <table cellspacing="4" cellpadding="4">

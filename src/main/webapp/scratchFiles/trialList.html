@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../home.css">
+    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.js"></script>
+    <script scr = "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+</head>
+<body ng-app="clinicalTrialApp">
+
+<div class="headerBox">
+        <span ng-repeat="trial in trials">
+                <u>Status:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}
+                <br>
+                <br>
+                <u>Study Title:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+                <br>
+                <br>
+                <u>Conditions:</u> {{trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value']}}
+        </span>
+</div>
+
+
+</body>
+
+<script>
+
+    var app = angular.module('clinicalTrialApp', ['ui.route']);
+
+</script>
+</html>

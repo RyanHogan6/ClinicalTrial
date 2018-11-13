@@ -3,7 +3,7 @@
 
 <div class="fullEligCritBox">
     <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCriteriaText'][0]['@value'] != null"
-        style="text-align: left; background-color: white; box-shadow: 5px 10px 18px dimgrey; border-radius: 3px; opacity: .91; font-family: sans-serif; left: 21%; width: 95%; padding-left: 60px; font-weight: lighter; white-space: pre-line;">
+        style="text-align: left; font-size: 19px; background-color: white; box-shadow: 5px 10px 18px dimgrey; border-radius: 3px; opacity: .91; font-family: sans-serif; left: 21%; width: 100%; padding-left: 60px; font-weight: lighter; white-space: pre-line;">
         <span ng-if= "trial['http://stjohns.edu/fullclinicaltrial/hasCriteriaText'][0]['@value']"><strong>Full Eligibility Criteria</strong>: {{trial['http://stjohns.edu/fullclinicaltrial/hasDetailedDescrip'][0]['@value']}}</span>
         <span ng-if= "!trial['http://stjohns.edu/fullclinicaltrial/hasCriteriaText'][0]['@value']"><strong>Full Eligibility Criteria</strong>: No description available</span>
     </h3>

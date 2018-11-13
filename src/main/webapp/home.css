@@ -33,8 +33,8 @@ body {
 }
 .top_left_image > img {
     position: absolute;
-    top: 25px;
-    height: 7%;
+    top: 10px;
+    height: 6%;
     width: 10%;
     left: 5%;
 }

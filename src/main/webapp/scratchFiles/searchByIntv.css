@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-weight: 100;
+}
+
+.header {
+    position: relative;
+    top: 200%;
+    left: 15%;
+    text-align: center;
+    font-family:"Palatino Linotype";
+}
+
+.SearchBox {
+    position: relative;
+    top: 220%;
+    left: 70px;
+    align-content: center;
+    text-align: center;
+}

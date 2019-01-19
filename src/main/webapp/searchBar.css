@@ -17,11 +17,11 @@
 .searchBar > h2{
     font-size: 28px;
     z-index: 2;
-    color: #88c788;
+    color: black;
     position: relative;
     font-weight: bolder;
     font-family:"Palatino Linotype", sans-serif;
-    padding-left: 2%;
+    padding-left: 3%;
 }
 
 .bar > input[type=text] {
@@ -30,10 +30,8 @@
     height: 50px;
     font-size: 26px;
     color: black;
-    box-shadow: 2px 2px 2px #888888;
     font-weight: lighter;
     font-family: sans-serif;
-    border-radius: 5px;
 
 }
 
@@ -50,7 +48,7 @@
     border-radius: 30px;
     left: 16.5%;
     text-decoration: none;
-    background-color: #addbad;
+    background-color: #a3d1a3;
     margin: 10px;
 }
 
@@ -90,12 +88,14 @@
     font-weight: lighter;
     color: black;
     font-size: 22px;
+    font-family: sans-serif;
 }
 
 .textBox1 > p {
     font-weight: lighter;
     color: black;
     font-size: 18px;
+    font-family: sans-serif;
 }
 
 .box2Img > img {
@@ -117,12 +117,14 @@
     font-weight: lighter;
     color: black;
     font-size: 22px;
+    font-family: sans-serif;
 }
 
 .textBox2 > p {
     font-weight: lighter;
     color: black;
     font-size: 18px;
+    font-family: sans-serif;
 }
 
 .box3Img > img{
@@ -144,12 +146,14 @@
     font-weight: lighter;
     color: black;
     font-size: 22px;
+    font-family: sans-serif;
 }
 
 .textBox3 > p {
     font-weight: lighter;
     color: black;
     font-size: 18px;
+    font-family: sans-serif;
 }
 
 .list-group {
@@ -169,7 +173,6 @@
     font-family: sans-serif;
     font-weight: lighter;
     text-align: left;
-    align-content: left;
     padding: 10px;
 }
 
@@ -178,7 +181,7 @@
     left: 0;
     width: 40%;
     height: 350px;
-    top: 150px;
+    top: 210px;
     background-color: black;
     color: white;
     opacity: .8;
@@ -200,9 +203,6 @@
     font-weight: lighter;
 }
 
-.footer {
-
-}
 
 .container {
     position: relative;

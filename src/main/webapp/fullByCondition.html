@@ -1,5 +1,8 @@
-<link rel="stylesheet" type="text/css" href="trialList.css">
+<!--
+    This is the HTML template for the full list of trials by condition
+-->
 
+<link rel="stylesheet" type="text/css" href="trialList.css">
 
 <div class="box">
 
@@ -21,27 +24,28 @@
         </h3>
     </div>
 
-
+    <!--
+        Button list is the HTML template for a button that will display trial information, if clicked will
+        take you to the full trial information. Ng repeat is used to display as many buttons are needed in the
+        result
+    -->
     <div class=buttonList>
-
-    <span ng-repeat="trial in trials" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
-        <a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
-            <button style="background-color: white;">
-                <span style="font-weight: lighter; border-bottom: 2px solid #88c788;">NCT</span>: {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
-                <br>
-                <br>
-                <span style="font-weight: lighter; border-bottom: 2px solid #88c788;">Study Title</span>: {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
-                <br>
-                <br>
-                <div class="statusBubble">
-                    <h4>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</h4>
-                </div>
-            </button>
-        </a>
-    </span>
+        <span ng-repeat="trial in trials" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
+            <a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
+                <button style="background-color: white;">
+                    <span style="font-weight: lighter; border-bottom: 2px solid #88c788;">NCT</span>: {{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
+                        <br>
+                        <br>
+                    <span style="font-weight: lighter; border-bottom: 2px solid #88c788;">Study Title</span>: {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+                        <br>
+                        <br>
+                    <div class="statusBubble">
+                        <h4>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</h4>
+                    </div>
+                </button>
+            </a>
+        </span>
     </div>
-
-
 </div>
 
 

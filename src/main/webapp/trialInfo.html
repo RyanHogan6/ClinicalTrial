@@ -5,8 +5,14 @@
     <title>Trial Info</title>
 </head>
 
-<div class="backBox">
 
+<!--
+
+    Trial info displays the full details of the clinical trial
+
+-->
+
+<div class="backBox">
     <div class="navOptions">
         <br>
         <br>
@@ -22,6 +28,10 @@
     <br>
     <br>
 
+    <!--
+        Conflicts box gives the user the option to view the conflicts associated with the trial. The button
+        will appear greyed out if there are no conflicts associated.
+    -->
     <div class="conflictsBox">
         <h2>Find Conflicts</h2>
         <br>
@@ -61,6 +71,9 @@
         <h3>About This Trial</h3>
     </div>
 
+    <!--
+        Gives general details about the trial, formatted in a table.
+    -->
     <div class="tableBox">
         <div class="tableContent">
             <table>
@@ -86,6 +99,9 @@
         <h3>Interventions</h3>
     </div>
 
+    <!--
+        Gives intervention information about the trial, formatted in a table.
+    -->
     <div class="tableBox">
         <div class="tableContent">
             <table>
@@ -113,6 +129,9 @@
     </div>
 
 
+    <!--
+        Gives the conditions of the trial, formatted in a table
+    -->
     <div class="tableBox">
         <div class="tableContent">
             <table>
@@ -135,6 +154,9 @@
     </div>
 
 
+    <!--
+        Gives eligibility criteria on the trial, formatted in a table.
+    -->
     <div class="tableBox">
         <div class="tableContent">
             <table>
@@ -157,6 +179,9 @@
             </table>
         </div>
 
+        <!--
+            Full criteria button allows the user to view the full criteria of the trial
+        -->
         <div class="fullCritButton">
              <span ng-repeat="trial in trialInfo | limitTo : 1 : 0">
                 <a ui-sref=".fullEligCrit({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
@@ -176,6 +201,10 @@
         <h3>Description</h3>
     </div>
 
+    <!--
+        Description box shows the general description of the trial, and below you can see the full
+        description by clicking on the detailed description button
+    -->
     <div class="descriptionBox">
         <h3 ng-repeat="trial in trialInfo" ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasDetailedDescrip'][0]['@value'] != null">
             <strong>Brief Summary</strong>: {{trial['http://stjohns.edu/fullclinicaltrial/hasBriefSummary'][0]['@value']}}
@@ -198,6 +227,9 @@
         <h3>Locations</h3>
     </div>
 
+    <!--
+        Gives the locations of the trials where they have been/are being held, formatted in a table.
+    -->
     <div class="tableBox">
         <div class="tableContent">
             <table>
@@ -223,6 +255,10 @@
     </div>
 
 
+    <!--
+        New search and back to results allow you to enter a new search on the main page, or reverts you back
+        to the list of trials
+    -->
     <div class="navOptions" style="display: inline-block; padding-left: 50%; padding-bottom: 100px;">
         <br>
         <br>

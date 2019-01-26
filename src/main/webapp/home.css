@@ -12,10 +12,9 @@ body {
 
 .headerImage > img{
     position: absolute;
-    top: 8%;
-    height:70%;
+    top: 93px;
     width: 100%;
-    overflow: hidden;
+    object-fit: cover;
     filter: brightness(50%);
     box-shadow: 2px 2px 2px lightgrey;
 }
@@ -34,8 +33,7 @@ body {
 .top_left_image > img {
     position: absolute;
     top: 10px;
-    height: 6%;
-    width: 10%;
+    height: 73px;
     left: 5%;
 }
 

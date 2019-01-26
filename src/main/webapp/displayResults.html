@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="displayResults.css">
+
+<div class="sectionDivider">
+
+	<div class="navOptions">
+		<br>
+		<br>
+		<a ui-sref="searchBar" class="newSearch">
+			New Search
+		</a>
+		<br>
+		<br>
+		<div class="facetList">
+			<span ng-repeat="facet in facetsForTrials track by $index"> 
+				<a ui-sref="allTrials({condition: condition, facet: facet.facetVal})">
+					<button style="background-color: white;">{{facet.facetVal + " " + facet.trialCount}}</button>
+				</a>
+			</span>
+		</div>
+	</div>
+	
+	<div class = "resultsBlock">
+		<div class="headerBubble" ng-repeat="trial in trials | limitTo: 1 : 0"
+			ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasCondition'][0]['@value'] != null">
+			<h2>
+				Trials found for: 
+				<span style="color: darkseagreen; font-size: 35px;">
+					{{trial["http://stjohns.edu/fullclinicaltrial/hasCondition"][0]["@value"]}}
+				</span>
+			</h2>
+			<h2 ng-if="facet != null">
+				With {{facetType}}: 
+				<span style="color: darkseagreen; font-size: 35px;">
+					{{facet}}
+				</span>
+			</h2>
+		</div>
+		
+		<div class=buttonDescr>
+			<h3>Click on a trial below to view extended clinical trial information</h3>
+		</div>
+		
+		<div class=buttonList>
+
+			<span ng-repeat="trial in trials"
+				ng-if="trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value'] != null">
+				<a ui-sref="viewTrials({nct: trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']})">
+					<button style="background-color: white;">
+						<div>
+							<span style="font-weight: lighter; border-bottom: 2px solid #88c788;">
+								NCT
+							</span>:
+							{{trial['http://stjohns.edu/fullclinicaltrial/hasNCT'][0]['@value']}}
+						</div>
+						<div style="height:50px; flex-grow:1;"></div>
+						<div>
+							<span style="font-weight: lighter; border-bottom: 2px solid #88c788;">
+								Study Title
+							</span>:
+							{{trial['http://stjohns.edu/fullclinicaltrial/hasBriefTitle'][0]['@value']}}
+						</div>
+						<div style="height:50px; flex-grow:1;"></div>
+						<div class="statusBubble">
+							<h4>{{trial['http://stjohns.edu/fullclinicaltrial/hasOverallStatus'][0]['@value']}}</h4>
+						</div>
+					</button>
+				</a>
+			</span>
+		</div>
+	</div>
+	
+</div>

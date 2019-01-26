@@ -2,12 +2,20 @@ package clinical;
 
 
 import utils.RepositoryMgr;
+import utils.NameValuePair;
+import utils.RdfNames;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
+
 
 /**
  * This class uses Jersey Restful API to connect the information in the DB
@@ -88,13 +96,53 @@ public class JerseyRepositoryMgr {
      * @param condition
      * @return all trials by condition
      */
-    @GET
+    /**@GET
     @Path("/getTrialsByCondition/{condition}")
     @Produces(MediaType.TEXT_PLAIN)
     public String getTrialsByCondition(@PathParam("condition") String condition) {
         RepositoryMgr repoMgr = new RepositoryMgr();
         return repoMgr.getFullTrialsByCondition(condition);
     }
+    */
+    
+    
+    /**
+     * Queries by a set of parameters.
+     * Example URI: /q?hasCondition=lymphoma&...
+     * @param querey
+     * @return
+     */
+    @GET
+    @Path("/getTrialsByQuery/trials")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTrialsByQuerey(@Context UriInfo query) {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        ArrayList<NameValuePair> queryPairs = new ArrayList<NameValuePair>();
+        Set<String> pairs = query.getQueryParameters().keySet();
+        
+        for(String pair : pairs) {
+        	queryPairs.add(new NameValuePair(pair, query.getQueryParameters().getFirst(pair)));
+        }
+        
+        return repoMgr.getFullTrialsByCriteria(queryPairs);
+    }
+    
+    @GET
+    @Path("/getFacetsByQuery/trials")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getFacetsByQuerey(@Context UriInfo query) {
+        RepositoryMgr repoMgr = new RepositoryMgr();
+        ArrayList<NameValuePair> queryPairs = new ArrayList<NameValuePair>();
+        Set<String> pairs = query.getQueryParameters().keySet();
+        
+        for(String pair : pairs) {
+        	queryPairs.add(new NameValuePair(pair, query.getQueryParameters().getFirst(pair)));
+        }
+        
+        return repoMgr.getFacetForFullTrialRetrieve(RdfNames.HASINTERVENTIONNAME, queryPairs);
+    }
+    
+    
 
     /**
      * Queries trial information by condition for trials that are currently recruiting
@@ -109,13 +157,14 @@ public class JerseyRepositoryMgr {
         return repoMgr.getRecruitingFullTrialsByCondition(condition);
     }
 
-    @GET
+    /**@GET
     @Path("/getConditionsByName/{condition}")
     @Produces(MediaType.TEXT_HTML)
     public String getConditionsByName(@PathParam("condition") String condition) {
         RepositoryMgr repoMgr = new RepositoryMgr();
         return repoMgr.getConditionsByName(condition);
     }
+    */
 
     /**
      * Queries for a list of all condition in the DB
